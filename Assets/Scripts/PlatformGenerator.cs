@@ -41,5 +41,5 @@ public class PlatformGenerator : MonoBehaviour
     {
         Destroy(activePlatform[0]);
         activePlatform.RemoveAt(0);
-    }
+    }    
 }

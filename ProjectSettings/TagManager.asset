@@ -7,12 +7,20 @@ TagManager:
   - Enemy
   - Update
   - Apple
-  - Balls
   - BluePlatform
   - GreenPlatform
   - Undefined
   - YellowPlatform
   - SnakeMain
+  - BlueWall
+  - YellowWall
+  - GreenWall
+  - Balls
+  - BlueBalls
+  - GreenBalls
+  - YellowBalls
+  - BadBalls
+  - GoodBalls
   layers:
   - Default
   - TransparentFX

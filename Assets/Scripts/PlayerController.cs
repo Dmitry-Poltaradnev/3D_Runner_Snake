@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int apple;
     [SerializeField] private GameObject GameOverPanel;
     [SerializeField] private Text appleScore;
-    [SerializeField] private Text ballsScore;
+    [SerializeField] private Text ballsScore;    
     private int bestScore;
     private bool isImmortal;
+    
+    
 
     private int lineToMove = 1;
     public float lineDistance = 4;
@@ -28,16 +30,17 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        bestScore = PlayerPrefs.GetInt("Balls");
+        bestScore = PlayerPrefs.GetInt("GoodBalls");
         ballsScore.text = bestScore.ToString();
         Time.timeScale = 1;
         controller = GetComponent<CharacterController>();
         isImmortal = false;
+        
         //tailGameObjects.Add(gameObject);
     }
 
     private void Update()
-    {
+    {      
 
         StartCoroutine(BoostTime());
 
@@ -79,17 +82,30 @@ public class PlayerController : MonoBehaviour
         {
             controller.Move(diff);
         }
+
     }
     private void FixedUpdate()
     {
         dir.z = speed;
         controller.Move(dir * Time.fixedDeltaTime);
-
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)//Дописать для всех шаров в зависимости от цвета.
     {
         if (hit.gameObject.tag == "Enemy")
+        {
+
+            if (isImmortal == true)
+            {
+                Destroy(hit.gameObject);
+            }
+            else
+            {
+                GameOverPanel.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+        if (hit.gameObject.tag == "BadBalls")
         {
             if (isImmortal == true)
             {
@@ -110,14 +126,15 @@ public class PlayerController : MonoBehaviour
             appleScore.text = apple.ToString();
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "Balls")
+        if (other.gameObject.tag == "GoodBalls")
         {
             bestScore++;
-            PlayerPrefs.SetInt("Balls", bestScore);
-            ballsScore.text = bestScore.ToString();            
+            PlayerPrefs.SetInt("GoodBalls", bestScore);
+            ballsScore.text = bestScore.ToString();
             Destroy(other.gameObject);
         }
     }
+
 
     private IEnumerator BoostTime()
     {
