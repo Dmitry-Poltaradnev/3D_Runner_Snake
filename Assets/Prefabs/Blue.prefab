@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2457118762870975091}
   - component: {fileID: 5922608411287791049}
   - component: {fileID: -5036869464322803981}
-  - component: {fileID: 9031914592366456972}
   m_Layer: 0
   m_Name: Blue
   m_TagString: BlueBalls
@@ -96,15 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9031914592366456972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8618199294088372779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b08890894bc26f4386fef00b0ceb915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

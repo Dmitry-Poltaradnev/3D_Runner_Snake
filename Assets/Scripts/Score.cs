@@ -9,6 +9,6 @@ public class Score : MonoBehaviour
 
     private void Update()
     {
-        //bollScore.text = (int)(bollsScore );
+        //bollScore.text = (int)(bollsScore);
     }
 }

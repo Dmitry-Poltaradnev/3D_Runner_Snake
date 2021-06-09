@@ -77,9 +77,7 @@ public class SwipeController : MonoBehaviour
 
             Reset();
         }
-
     }
-
     private void Reset()
     {
         startTouch = swipeDelta = Vector2.zero;

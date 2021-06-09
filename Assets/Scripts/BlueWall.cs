@@ -6,7 +6,6 @@ public class BlueWall : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.tag == "SnakeMain")
         {
             other.GetComponent<Renderer>().material.color = Color.blue;

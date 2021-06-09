@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GreenWall : MonoBehaviour
-{
-        
+{        
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "SnakeMain")
