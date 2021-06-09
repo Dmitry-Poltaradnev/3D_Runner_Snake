@@ -12,22 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int apple;
     [SerializeField] private GameObject GameOverPanel;
     [SerializeField] private Text appleScore;
-    [SerializeField] private Text ballsScore;    
+    [SerializeField] private Text ballsScore;
     private int bestScore;
     private bool isImmortal;
-    
-    
-
     private int lineToMove = 1;
     public float lineDistance = 4;
-
-    //public List<GameObject> tailGameObjects = new List<GameObject>();//ассив для хранения всех элементов змейки.
-    //public float zOffset = -0.9f;//На какое расстояние каждый последующий элемент хвоста будет удалён от предыдущего.
-
-    //public GameObject TailPrefab;
-
-
-
+    private AudioSource eatBall;
     void Start()
     {
         bestScore = PlayerPrefs.GetInt("GoodBalls");
@@ -35,13 +25,11 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
         controller = GetComponent<CharacterController>();
         isImmortal = false;
-        
-        //tailGameObjects.Add(gameObject);
+        eatBall = GetComponent<AudioSource>();
     }
 
     private void Update()
-    {      
-
+    {
         StartCoroutine(BoostTime());
 
         if (SwipeController.swipeRight)
@@ -90,11 +78,10 @@ public class PlayerController : MonoBehaviour
         controller.Move(dir * Time.fixedDeltaTime);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)//Дописать для всех шаров в зависимости от цвета.
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "Enemy")
         {
-
             if (isImmortal == true)
             {
                 Destroy(hit.gameObject);
@@ -125,6 +112,7 @@ public class PlayerController : MonoBehaviour
             apple++;
             appleScore.text = apple.ToString();
             Destroy(other.gameObject);
+            eatBall.Play();
         }
         if (other.gameObject.tag == "GoodBalls")
         {
@@ -132,10 +120,9 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("GoodBalls", bestScore);
             ballsScore.text = bestScore.ToString();
             Destroy(other.gameObject);
+            eatBall.Play();
         }
     }
-
-
     private IEnumerator BoostTime()
     {
         if (apple == 3)
@@ -148,17 +135,4 @@ public class PlayerController : MonoBehaviour
             isImmortal = false;
         }
     }
-    //public float Speed
-    //{
-    //    get => speed;
-    //}
-
-    //public void AddTail()
-    //{        
-    //    Vector3 newTailPoS = tailGameObjects[tailGameObjects.Count - 1].transform.position;
-    //    newTailPoS.z -= zOffset;
-    //    tailGameObjects.Add(GameObject.Instantiate(TailPrefab, newTailPoS, Quaternion.identity) as GameObject);
-    //}
-
-
 }

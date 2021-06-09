@@ -26,4 +26,9 @@ public class MenuPanel : MonoBehaviour
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
     }
+    public void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("Work");
+    }
 }

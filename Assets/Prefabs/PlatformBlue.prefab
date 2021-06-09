@@ -497,6 +497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1834776881043511507, guid: d270ba168808a254d9ece7d2dfee7c7c, type: 3}
+      propertyPath: m_TagString
+      value: BadBalls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d270ba168808a254d9ece7d2dfee7c7c, type: 3}
 --- !u!4 &3341331944372604555 stripped

@@ -102,9 +102,6 @@ MonoBehaviour:
   appleScore: {fileID: 0}
   ballsScore: {fileID: 0}
   lineDistance: 3
-  tailGameObjects: []
-  zOffset: -0.9
-  TailPrefab: {fileID: 7475082076234179590, guid: 928a170f558dc1e4d8c3cdb934d9bbbd, type: 3}
 --- !u!143 &8073450325112912092
 CharacterController:
   m_ObjectHideFlags: 0
